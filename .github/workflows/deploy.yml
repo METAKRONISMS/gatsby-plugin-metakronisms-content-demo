@@ -6,8 +6,6 @@ name: deploy
 on:
   push:
     branches: [main]
-  # pull_request:
-  #   branches: [ main ]
 
 jobs:
   build:
@@ -16,9 +14,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          # - 10.x
           - 12.8
-          # - 14.x
 
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
@@ -34,18 +30,16 @@ jobs:
       - name: Checkout gh-pages
         uses: actions/checkout@v2
         with:
-          # repository: METAKRONISMS/gatsby-plugin-metakronisms-content-demo
-          # token: ${{ secrets.ACCESS_TOKEN }}
           path: gh-pages
           ref: gh-pages
 
-      # - name: Cache main
-      #   uses: actions/cache@v2.0.0
-      #   with:
-      #     path: ~/main/.npm
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/main/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+      - name: Cache main
+        uses: actions/cache@v2.0.0
+        with:
+          path: ~/main/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/main/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install main
         run: |
@@ -56,11 +50,6 @@ jobs:
         run: |
           cd main
           npm run build
-
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     path: main/public
-      #     name: build
 
       - name: Copy main build to gh-pages
         run: |

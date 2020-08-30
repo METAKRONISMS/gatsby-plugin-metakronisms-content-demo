@@ -10,7 +10,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "local:dev": "nodemon -w ../gatsby-plugin-metakronisms-content/gatsby-node.js -w ../gatsby-plugin-metakronisms-content/dist/ -x 'gatsby clean && gatsby develop'",
-    "lint": "eslint --ext js,jsx gatsby-* src .neutrinorc.js"
+    "lint": "eslint --ext js,jsx gatsby-* src"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
