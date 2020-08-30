@@ -39,13 +39,13 @@ jobs:
           path: gh-pages
           ref: gh-pages
 
-      - name: Cache main
-        uses: actions/cache@v2.0.0
-        with:
-          path: ~/main/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/main/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      # - name: Cache main
+      #   uses: actions/cache@v2.0.0
+      #   with:
+      #     path: ~/main/.npm
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/main/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
 
       - name: Install main
         run: |
