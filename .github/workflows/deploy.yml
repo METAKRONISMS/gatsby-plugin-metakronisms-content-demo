@@ -31,37 +31,40 @@ jobs:
         with:
           path: main
 
-      - name: Checkout GH pages
+      - name: Checkout gh-pages
         uses: actions/checkout@v2
         with:
-          repository: METAKRONISMS/METAKRONISMS.github.io
-          token: ${{ secrets.ACCESS_TOKEN }}
+          # repository: METAKRONISMS/gatsby-plugin-metakronisms-content-demo
+          # token: ${{ secrets.ACCESS_TOKEN }}
           path: gh-pages
-          ref: master
+          ref: gh-pages
 
-      - name: Cache
+      - name: Cache main
         uses: actions/cache@v2.0.0
         with:
           path: ~/main/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/main/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install
+
+      - name: Install main
         run: |
           cd main
           npm ci
 
-      - name: Build
+      - name: Build main
         run: |
           cd main
           npm run build
 
-      - uses: actions/upload-artifact@v2
-        with:
-          path: main/public
-          name: build
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     path: main/public
+      #     name: build
 
-      - run: cp -rf main/public/* gh-pages/
+      - name: Copy main build to gh-pages
+        run: |
+          cp -rf main/public/* gh-pages/
 
       - name: Commit and push GH pages
         run: |
