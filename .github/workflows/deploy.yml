@@ -46,6 +46,16 @@ jobs:
           cd main
           npm ci
 
+      - name: Lint main
+        run: |
+          cd main
+          npm run lint
+
+      # - name: Test main
+      #   run: |
+      #     cd main
+      #     npm test
+
       - name: Build main
         run: |
           cd main
@@ -53,7 +63,10 @@ jobs:
 
       - name: Copy main build to gh-pages
         run: |
+          cp gh-pages/CNAME CNAME
+          rm -rf gh-pages/*
           cp -rf main/public/* gh-pages/
+          cp CNAME gh-pages/
 
       - name: Commit and push GH pages
         run: |
