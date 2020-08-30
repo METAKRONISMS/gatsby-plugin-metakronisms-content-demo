@@ -23,7 +23,7 @@
     "gatsby-plugin-feed-mdx": "^1.0.1",
     "gatsby-plugin-manifest": "^2.4.23",
     "gatsby-plugin-mdx": "^1.2.34",
-    "gatsby-plugin-metakronisms-content": "https://github.com/METAKRONISMS/gatsby-plugin-metakronisms-content.git#6b754a481d5a875384d6d70d6df5dab88b515584",
+    "gatsby-plugin-metakronisms-content": "https://github.com/METAKRONISMS/gatsby-plugin-metakronisms-content.git#43ca3d7",
     "gatsby-plugin-offline": "^3.2.23",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-sass": "^2.3.12",
